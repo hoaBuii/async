@@ -2,7 +2,7 @@ import React from 'react';
 
 const Pickers = () => {
     return(
-        <p>This is from posts component.</p>
+        <p>This is from picker component.</p>
     );
 }
 

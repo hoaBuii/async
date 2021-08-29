@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Pickers from '../components/Pickers';
 import Posts from '../components/Posts';
+import {fetchPostsIfNeeded} from '../actions';
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-   <div>
-      <span>Hello world</span>
-      <Pickers/>
-      <Posts/>
-   </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    const { dispatch, selectedSubreddit } = this.props;
+    dispatch(fetchPostsIfNeeded(selectedSubreddit));
+  }
+
+  render() {
+    const {posts} = this.props;
+    return(
+      <div>
+        <Pickers/>
+        <Posts posts={posts}/>
+      </div>
+    );
+  };
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  const {selectedSubreddit, postsBySubreddit} = state;
+  const {items: posts} = postsBySubreddit;
+  return {
+    selectedSubreddit,
+    postsBySubreddit,
+    posts
+  };
+}
+
+export default connect(mapStateToProps)(App);
