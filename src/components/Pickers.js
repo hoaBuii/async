@@ -1,8 +1,16 @@
 import React from 'react';
 
-const Pickers = () => {
+const Pickers = ({value, onChange, options}) => {
     return(
-        <p>This is from picker component.</p>
+        <select value={value} onChange={e => onChange(e.target.value)}>
+            {
+                options.map((option, i)=>{
+                    return(
+                        <option value={option} key={i}>{option}</option>
+                    );
+                })
+            }
+        </select>
     );
 }
 

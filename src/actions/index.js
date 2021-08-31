@@ -1,3 +1,7 @@
+export const selectSubreddit = (subreddit) => ({
+    type:'SELECT_SUBREDDIT',
+    subreddit
+})
 
 const receivePosts = (subreddit, json) => ({
     type: 'RECEIVE_POSTS',

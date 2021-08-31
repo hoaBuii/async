@@ -1,8 +1,14 @@
 import React from 'react';
 import { combineReducers } from 'redux';
 
+
+
+// key: value
+// selectedSubreddit: action.subreddit
 const selectedSubreddit = (state='reactjs', action) => {
     switch(action.type){
+        case 'SELECT_SUBREDDIT':
+            return action.subreddit;
         default:
             return state;
     }
